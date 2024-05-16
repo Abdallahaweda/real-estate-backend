@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dontenv from 'dotenv'
 import userRouter from './routes/UserRoute.js'
 import authRouter from './routes/AuthRoute.js'
+import listinRouter from './routes/listingRoute.js'
 import cookieParser from 'cookie-parser'
 
 
@@ -25,6 +26,7 @@ app.listen(3000,()=>{
 
 app.use("/api/user",userRouter)
 app.use('/api/auth',authRouter)
+app.use('/api/listing',listinRouter)
 
 app.use((err,req,res,next)=>{
     const statusCode=err.statusCode||500
