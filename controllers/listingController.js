@@ -43,7 +43,23 @@ export const updateListing = async (req, res, next) => {
       req.body,
       { new: true }
     );
+
     res.status(200).json(updatedListing);
+  } catch (error) {
+    if (error.name === "CastError" && error.kind === "ObjectId") {
+      return next(errorHandeler(404, "List not found!"));
+    }
+    next(error);
+  }
+};
+
+export const showListing = async (req, res, next) => {
+  try {
+    const listing = await Listing.findById(req.params.id);
+    if (!listing) {
+      return next(errorHandeler(404, "List not found!"));
+    }
+    res.status(200).json(listing);
   } catch (error) {
     if (error.name === "CastError" && error.kind === "ObjectId") {
       return next(errorHandeler(404, "List not found!"));
