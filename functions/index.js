@@ -36,7 +36,7 @@ app.use("/api/listing", listinRouter);
 router.get("/demo", (req, res) => {
   res.json({ message: "API is running" });
 });
-app.use("/.netlify/functions/test", router);
+app.use("/.netlify/functions/", router);
 
 module.exports.handler = ServerlessHttp(app);
 // const handler = ServerlessHttp(app);
