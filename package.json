@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "Using MERN and Tailwind css",
   "main": "index.js",
-  "type": "module",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "node index.js",
-    "build": "npm install && npm run build"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "aweda",
