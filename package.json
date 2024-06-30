@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Using MERN and Tailwind css",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build": "netlify deploy --prod"
+    "start": "node functions/index.js",
+    "build": "npm install && npm run build"
   },
   "keywords": [],
   "author": "aweda",
