@@ -1,3 +1,4 @@
+dontenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import dontenv from "dotenv";
@@ -9,7 +10,6 @@ import ServerlessHttp from "serverless-http";
 
 const router = express.Router();
 
-dontenv.config();
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
