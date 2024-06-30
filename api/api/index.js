@@ -1,4 +1,3 @@
-dontenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import dontenv from "dotenv";
@@ -7,6 +6,7 @@ import authRouter from "../routes/AuthRoute.js";
 import listinRouter from "../routes/listingRoute.js";
 import cookieParser from "cookie-parser";
 import ServerlessHttp from "serverless-http";
+dontenv.config();
 
 const router = express.Router();
 
