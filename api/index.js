@@ -23,7 +23,7 @@ const app = express();
 
 app.use(express.json());
 
-const port = 3000 || process.env.PORT;
+const port = 8080 || process.env.PORT;
 
 app.use(cookieParser());
 
