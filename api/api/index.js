@@ -23,17 +23,15 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cookieParser());
+const port = 3000 || process.env.PORT;
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+app.use(cookieParser());
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listinRouter);
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/test", (req, res) => res.send("Express on Vercel"));
 // router.get("/demo", (req, res) => {
 //   res.json({ message: "API is running" });
 // });
@@ -56,4 +54,7 @@ app.use((err, req, res, next) => {
   });
 });
 
+app.listen(port, () => {
+  console.log("Server is running on port 3000");
+});
 module.exports = app;
