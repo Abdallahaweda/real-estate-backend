@@ -1,9 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 import dontenv from "dotenv";
-import userRouter from "../routes/UserRoute.js";
-import authRouter from "../routes/AuthRoute.js";
-import listinRouter from "../routes/listingRoute.js";
+import userRouter from "./routes/UserRoute.js";
+import authRouter from "./routes/AuthRoute.js";
+import listinRouter from "./routes/listingRoute.js";
 import cookieParser from "cookie-parser";
 import ServerlessHttp from "serverless-http";
 
