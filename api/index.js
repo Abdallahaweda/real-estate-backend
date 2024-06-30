@@ -33,6 +33,7 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listinRouter);
 
+app.get("/", (req, res) => res.send("Express on Vercel"));
 // router.get("/demo", (req, res) => {
 //   res.json({ message: "API is running" });
 // });
