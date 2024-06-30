@@ -7,6 +7,8 @@ import listinRouter from "../routes/listingRoute.js";
 import cookieParser from "cookie-parser";
 import ServerlessHttp from "serverless-http";
 
+// const router=express.Router()
+
 dontenv.config();
 mongoose
   .connect(process.env.MONGO)
@@ -31,7 +33,7 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listinRouter);
 
-app.get("/.netlify/functions/api", (req, res) => {
+app.get("/.netlify/functions/test", (req, res) => {
   return res.json({
     message: "Hello from the serverless function!",
   });
