@@ -5,11 +5,8 @@ import userRouter from "../routes/UserRoute.js";
 import authRouter from "../routes/AuthRoute.js";
 import listinRouter from "../routes/listingRoute.js";
 import cookieParser from "cookie-parser";
-import ServerlessHttp from "serverless-http";
-dontenv.config();
-
 const router = express.Router();
-
+dontenv.config();
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
@@ -18,20 +15,16 @@ mongoose
   .catch((e) => {
     console.log(e);
   });
-
 const app = express();
-
 app.use(express.json());
-
-const port = 8080 || process.env.PORT;
-
 app.use(cookieParser());
-
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listinRouter);
 
-app.get("/test", (req, res) => res.send("Express on Vercel"));
 // router.get("/demo", (req, res) => {
 //   res.json({ message: "API is running" });
 // });
@@ -41,9 +34,9 @@ app.get("/test", (req, res) => res.send("Express on Vercel"));
 // const handler = ServerlessHttp(app);
 // module.exports.handler = async (event, context) => {
 //   const result = await handler(event, context);
+
 //   return result;
 // };
-
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
@@ -53,8 +46,3 @@ app.use((err, req, res, next) => {
     message,
   });
 });
-
-app.listen(port, () => {
-  console.log("Server is running on port 3000");
-});
-module.exports = app;
