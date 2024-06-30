@@ -33,16 +33,17 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listinRouter);
 
-router.get("/", (req, res) => {
+router.get("/demo", (req, res) => {
   res.json({ message: "API is running" });
 });
 app.use("/.netlify/functions/test", router);
 
-const handler = ServerlessHttp(app);
-module.exports.handler = async (event, context) => {
-  const result = await handler(event, context);
-  return result;
-};
+module.exports.handler = ServerlessHttp(app);
+// const handler = ServerlessHttp(app);
+// module.exports.handler = async (event, context) => {
+//   const result = await handler(event, context);
+//   return result;
+// };
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
