@@ -11,19 +11,6 @@ dotenv.config();
 
 const app = express();
 
-// Connect to MongoDB
-mongoose
-  .connect(process.env.MONGO, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Error connecting to MongoDB:", err.message);
-  });
-
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
@@ -42,6 +29,18 @@ app.use((err, req, res, next) => {
     statusCode,
     message,
   });
+});
+
+// MongoDB connection
+mongoose.connect(process.env.MONGO, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log("Connected to MongoDB");
+})
+.catch((err) => {
+  console.error("Error connecting to MongoDB:", err.message);
 });
 
 // Export the Express app wrapped with serverless-http
