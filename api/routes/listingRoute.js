@@ -5,8 +5,8 @@ import {
   updateListing,
   showListing,
   getListings,
-} from "../controllers/listingController.js";
-import { verifyToken } from "../utils/verifyUser.js";
+} from "../../controllers/listingController.js";
+import { verifyToken } from "../../utils/verifyUser.js";
 
 const router = express.Router();
 
